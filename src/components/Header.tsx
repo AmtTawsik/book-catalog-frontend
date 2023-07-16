@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className="flex items-center justify-between border-b border-stone-200 bg-yellow-300 px-4 py-3 uppercase sm:px-6">
       <Link to="/" className="font-medium tracking-widest">
-        Book Tracker
+        Book Catalog
       </Link>
 
       <div className="flex items-center gap-4 text-stone-700">
