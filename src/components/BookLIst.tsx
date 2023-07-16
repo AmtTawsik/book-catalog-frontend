@@ -1,6 +1,7 @@
 import { IBook } from '../types/bookType';
 import BookItem from './BookItem';
 
+// Show Book List 
 function BookLIst({ books }: { books: IBook[] }) {
   return (
     <ul className="mt-6 grid grid-cols-1 gap-4 px-2 md:grid-cols-2">
