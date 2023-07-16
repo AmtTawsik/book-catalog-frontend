@@ -1,28 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
-import { useSignupMutation } from '../redux/features/auth/authApi';
+import { useSigninMutation } from '../redux/features/auth/authApi';
 
-function Signup() {
-  const [userName, setUserName] = useState('');
+function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  const [signup, { data, isLoading, error }] = useSignupMutation();
+  const [signin, { data, isLoading, error }] = useSigninMutation();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (error) {
       if ('data' in error) {
-        if (
-          (error.data as { message?: string }).message === 'Duplicate email'
-        ) {
-          setErrorMsg('Email already exists');
+        if ((error.data as { message?: string }).message) {
+          const message = (error.data as { message?: string }).message;
+          setErrorMsg(message as string);
         } else {
           setErrorMsg('Something went wrong! Try again');
         }
@@ -30,7 +29,7 @@ function Signup() {
     }
 
     if (data?.success) {
-      navigate('/signin');
+      navigate('/all-books');
     }
   }, [data, error, navigate]);
 
@@ -39,31 +38,17 @@ function Signup() {
 
     setErrorMsg('');
 
-    signup({ userName, email, password });
+    signin({ email, password });
   }
 
   return (
     <div className="flex h-full w-full items-center justify-center px-4 py-6">
       <div className="w-full rounded-md bg-yellow-50 p-6">
         <h2 className="mb-8 text-2xl font-semibold">
-          Ready to track your reading? Let's signup first!
+          Let's track your reading!
         </h2>
 
         <form onSubmit={handleSubmit}>
-          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <label className="text-lg sm:basis-40">Username</label>
-            <div className="grow">
-              <input
-                type="text"
-                name="userName"
-                className="input"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-
           <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
             <label className="text-lg sm:basis-40">Email</label>
             <div className="grow">
@@ -75,6 +60,9 @@ function Signup() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
+              {/* <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
+       error
+      </p> */}
             </div>
           </div>
 
@@ -94,7 +82,7 @@ function Signup() {
 
           <div>
             <Button disabled={isLoading} type="primary">
-              {isLoading ? 'Signing up...' : 'Signup'}
+              {isLoading ? 'Signning in...' : 'Signin'}
             </Button>
           </div>
           {errorMsg !== '' && (
@@ -108,4 +96,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Signin;

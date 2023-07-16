@@ -1,44 +1,43 @@
-import { Button } from '@/components/ui/button';
-import banner from '@/assets/images/banner.png';
-import hero from '@/assets/images/hero.png';
-import { Link } from 'react-router-dom';
-import Footer from '@/layouts/Footer';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import BookLIst from '../components/BookLIst';
+import Error from '../components/ui/Error';
+import Loader from '../components/ui/Loader';
+import { useGetBooksQuery } from '../redux/features/book/bookApi';
+import { IBook } from '../types/bookType';
 
-export default function Home() {
+function Home() {
+  const {
+    data: books,
+    isLoading,
+    isError,
+  } = useGetBooksQuery({ page: 1, limit: 10 });
+
+  let content = null;
+
+  if (isLoading) content = <Loader />;
+  if (!isLoading && isError) content = <Error message="There was an error" />;
+  if (!isLoading && !isError && (books?.data as IBook[]).length === 0) {
+    <Error message="No books found" />;
+  }
+  if (!isLoading && !isError && (books?.data as IBook[]).length > 0) {
+    content = <BookLIst books={books?.data} />;
+  }
+
   return (
-    <>
-      <div className="flex justify-between items-center h-[calc(100vh-80px)] max-w-7xl mx-auto ">
-        <div>
-          <h1 className="text-6xl font-black text-primary mb-2">
-            HAYLOU <br /> SOLAR PLUSE
-          </h1>
-          <p className="text-secondary font-semibold text-xl">
-            Effortless communication at your fingertips
-          </p>
-          <div className="text-primary mt-20">
-            <p>Bluetooth 5.2 for easy, secure communication</p>
-            <p>Precise 143 Amoled display for clear visuals</p>
-          </div>
-          <Button className="mt-5">Learn more</Button>
-        </div>
-        <div className="relative -right-14">
-          <img src={banner} alt="" />
-        </div>
+    <div className="px-2 py-4">
+      <div className="rounded-md bg-yellow-50 p-8">
+        <blockquote className="text-2xl font-bold text-stone-600">
+          "Reality doesn’t always give us the life that we desire, but we can
+          always find what we desire between the pages of books."
+        </blockquote>
+        <span className="mt-2 block text-base font-medium italic text-stone-700">
+          -- Adelise M. Cullens
+        </span>
       </div>
-      <div className="mb-96">
-        <div>
-          <img className="mx-auto" src={hero} alt="" />
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-5xl font-black text-primary uppercase mt-10">
-            The future of tech is here
-          </h1>
-          <Button className="mt-10" asChild>
-            <Link to="/products">Brows all products</Link>
-          </Button>
-        </div>
-      </div>
-      <Footer />
-    </>
+      {content}
+    </div>
   );
 }
+
+export default Home;
