@@ -5,7 +5,7 @@ type IBookIemProps = {
   wishlist?: boolean;
   book: IBook;
 };
-
+// Book Items function 
 function BookItem({ wishlist, book }: IBookIemProps) {
   const { image, id, title, author, genre, publicationYear, addedBy } = book;
   return (
