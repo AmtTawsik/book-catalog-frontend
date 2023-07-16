@@ -10,7 +10,6 @@ function TrackBookList() {
       <TrackBookItem />
       <TrackBookItem />
       <TrackBookItem />
-      <TrackBookItem />
     </ul>
   );
 }
