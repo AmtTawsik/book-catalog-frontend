@@ -26,7 +26,7 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="all-books" element={<AllBooks />} />
           <Route
-            path="book/:id"
+            path="book/:bookId"
             element={
               <PrivateRoute>
                 <Book />

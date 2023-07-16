@@ -17,12 +17,12 @@ function Header() {
       <Link to="/" className="font-medium tracking-widest">
         Book Tracker
       </Link>
-  
+
       <div className="flex items-center gap-4 text-stone-700">
         <LinkButton type="yellow" to="/all-books">
           All Books
         </LinkButton>
-        {/* auth asscees token */}
+
         {auth?.accessToken && auth?.userId ? (
           <>
             <LinkButton type="yellow" to="/add-book">

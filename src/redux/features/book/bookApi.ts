@@ -33,7 +33,10 @@ const bookApi = api.injectEndpoints({
         return queryString;
       },
     }),
+    getBook: builder.query({
+      query: (id: string) => `/book/${id}`,
+    }),
   }),
 });
 
-export const { useGetBooksQuery } = bookApi;
+export const { useGetBooksQuery, useGetBookQuery } = bookApi;
