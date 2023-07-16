@@ -5,8 +5,6 @@ function Filter() {
         <label className="">Genre:</label>
         <select
           className="placeholder-text-stone-400 w-17 rounded-full bg-yellow-50 px-4 py-2 text-sm transition-all duration-300 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-opacity-50"
-          // value={selectedGenre}
-          // onChange={handleGenreChange}
         >
           <option value="">All</option>
           <option value="Fantasy">Fantasy</option>
