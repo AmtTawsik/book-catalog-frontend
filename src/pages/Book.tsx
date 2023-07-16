@@ -35,7 +35,7 @@ function Book() {
               </span>
             </div>
           </div>
-          {/* Boook Image  */}
+
           <div className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
             <img
               src={book?.data?.image}

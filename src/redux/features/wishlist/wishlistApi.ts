@@ -1,8 +1,11 @@
 import { api } from '../../api/apiSlice';
 
 const wishlistApi = api.injectEndpoints({
-  endpoints: (builder) => ({}),
+  endpoints: (builder) => ({
+    getWishlist: builder.query({
+      query: () => '/wishlist',
+    }),
+  }),
 });
 
-// eslint-disable-next-line no-empty-pattern
-export const {} = wishlistApi;
+export const { useGetWishlistQuery } = wishlistApi;

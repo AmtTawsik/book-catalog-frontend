@@ -1,8 +1,11 @@
 import { api } from '../../api/apiSlice';
 
 const trackApi = api.injectEndpoints({
-  endpoints: (builder) => ({}),
+  endpoints: (builder) => ({
+    getTracklist: builder.query({
+      query: () => '/track',
+    }),
+  }),
 });
 
-// eslint-disable-next-line no-empty-pattern
-export const {} = trackApi;
+export const { useGetTracklistQuery } = trackApi;

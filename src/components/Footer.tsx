@@ -13,6 +13,9 @@ function Footer() {
           <Link to="/tracker">Your Tracking List &rarr;</Link>
         </div>
       </div>
+      {/* <div className="flex items-center justify-center bg-stone-800 px-4 py-2 text-xs text-stone-400 sm:px-6">
+        All rights reserved by Book Tracker - 2023
+      </div> */}
     </>
   );
 }

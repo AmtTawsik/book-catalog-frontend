@@ -1,10 +1,11 @@
 import LinkButton from './LinkButton';
 
-function Error({ message }: { message: string }) {
+function Error({ message }: { message?: string }) {
   return (
-    <div>
-      <h1>Something went wrong</h1>
-      <p>{message}</p>
+    <div className="mt-6 w-full rounded-md bg-red-100 p-2 text-center">
+      <p className="text-xl text-red-700">
+        {message ? message : 'Something went wrong'}
+      </p>
       <LinkButton to="-1">&larr; Go back</LinkButton>
     </div>
   );

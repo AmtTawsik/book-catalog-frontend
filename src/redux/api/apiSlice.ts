@@ -8,7 +8,7 @@ import { userLoggedOut } from '../features/auth/authSlice';
 import { RootState } from '../store';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api/v1',
+  baseUrl: 'https://book-catalog-eight.vercel.app/api/v1',
   prepareHeaders: async (headers, { getState }) => {
     const token: string | undefined = (getState() as RootState).auth
       .accessToken;
