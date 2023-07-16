@@ -7,7 +7,7 @@ function Review() {
         className="h-10 w-10 rounded-full"
       />
       <div className="flex flex-col gap-0.5">
-        <p className="text-sm font-medium">Tanvir Chowdhury</p>
+        <p className="text-sm font-medium">Abdullah Al Mubin</p>
         <p className="space-x-2">
           <span className="text-sm font-medium">Review:</span>
           <span>Best reading experience</span>

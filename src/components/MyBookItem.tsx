@@ -11,7 +11,7 @@ function MyBookItem() {
       <div className="flex h-36 grow flex-col gap-0.5">
         <p className="text-lg font-medium">Book Name</p>
         <p className="text-sm capitalize italic text-stone-500">
-          Author: Tanvir Chowodhury
+          Author: Abdullah Al Mubin
         </p>
         <p>
           Genre:{' '}
