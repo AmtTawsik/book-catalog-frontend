@@ -10,6 +10,7 @@ function WishBooks() {
       <BookItem wishlist={true} />
       <BookItem wishlist={true} />
       <BookItem wishlist={true} />
+      <BookItem wishlist={true} />
     </ul>
   );
 }
