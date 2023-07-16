@@ -1,23 +1,25 @@
-import { Link } from 'react-router-dom';
-import { api } from '../redux/api/apiSlice';
-import { userLoggedOut } from '../redux/features/auth/authSlice';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import LinkButton from './ui/LinkButton';
+import { Link, useNavigate } from 'react-router-dom';
+import { api } from '../../redux/api/apiSlice';
+import { userLoggedOut } from '../../redux/features/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import LinkButton from './LinkButton';
 
 function Header() {
   const auth = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const logout = () => {
     dispatch(userLoggedOut());
     localStorage.clear();
     dispatch(api.util.resetApiState());
+    navigate('/signin');
   };
 
   return (
     <header className="flex items-center justify-between border-b border-stone-200 bg-cyan-300 px-4 py-3 uppercase sm:px-6">
       <Link to="/" className="font-medium tracking-widest">
-        Book Catalog
+        Book-Catalog
       </Link>
 
       <div className="flex items-center gap-4 text-stone-700">

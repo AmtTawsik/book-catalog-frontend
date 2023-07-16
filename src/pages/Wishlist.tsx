@@ -1,4 +1,4 @@
-import WishBooks from '../components/Wishlist';
+import WishBooks from '../components/Wishlist/Wishlist';
 
 function Wishlist() {
   return (

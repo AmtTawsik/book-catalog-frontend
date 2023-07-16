@@ -1,23 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 //import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface ITrack {
-  userName: string;
-  email: string;
+  reading: number;
+  finished: number;
 }
 
 const initialState: ITrack = {
-  userName: '',
-  email: '',
+  reading: 0,
+  finished: 0,
 };
 
 const trackSlice = createSlice({
   name: 'track',
   initialState,
-  reducers: {},
+  reducers: {
+    calcReading(state: ITrack, action: PayloadAction<number>) {
+      state.reading = action.payload;
+    },
+    calcFinished(state: ITrack, action: PayloadAction<number>) {
+      state.finished = action.payload;
+    },
+  },
 });
 
 // eslint-disable-next-line no-empty-pattern
-export const {} = trackSlice.actions;
+export const { calcReading, calcFinished } = trackSlice.actions;
 
 export default trackSlice.reducer;

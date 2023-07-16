@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { FormEvent, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import { useSigninMutation } from '../redux/features/auth/authApi';
@@ -29,6 +30,7 @@ function Signin() {
     }
 
     if (data?.success) {
+      toast.success('Signin successfully');
       navigate('/all-books');
     }
   }, [data, error, navigate]);

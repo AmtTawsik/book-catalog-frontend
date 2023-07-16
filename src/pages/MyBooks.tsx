@@ -1,4 +1,4 @@
-import MyBookList from '../components/MyBookList';
+import MyBookList from '../components/MyBooks/MyBookList';
 
 function MyBooks() {
   return (

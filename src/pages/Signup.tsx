@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { FormEvent, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import { useSignupMutation } from '../redux/features/auth/authApi';
@@ -30,6 +31,7 @@ function Signup() {
     }
 
     if (data?.success) {
+      toast.success('Signup successfull');
       navigate('/signin');
     }
   }, [data, error, navigate]);

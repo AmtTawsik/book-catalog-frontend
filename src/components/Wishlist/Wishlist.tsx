@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { useGetWishlistQuery } from '../redux/features/wishlist/wishlistApi';
-import { IWishlistItem } from '../types/wishitemType';
+import { useGetWishlistQuery } from '../../redux/features/wishlist/wishlistApi';
+import { IWishlistItem } from '../../types/wishitemType';
+import Error from '../ui/Error';
+import Loader from '../ui/Loader';
 import WishlistBookItem from './WishlistBookItem';
-import Error from './ui/Error';
-import Loader from './ui/Loader';
 
 function WishBooks() {
   const { data: wishlist, isLoading, isError } = useGetWishlistQuery(undefined);

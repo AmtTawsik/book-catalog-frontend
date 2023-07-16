@@ -1,4 +1,4 @@
-import { IBook } from '../types/bookType';
+import { IBook } from '../../types/bookType';
 import BookItem from './BookItem';
 
 function BookLIst({ books }: { books: IBook[] }) {

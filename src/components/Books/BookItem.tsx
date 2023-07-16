@@ -1,5 +1,5 @@
-import { IBook } from '../types/bookType';
-import LinkButton from './ui/LinkButton';
+import { IBook } from '../../types/bookType';
+import LinkButton from '../ui/LinkButton';
 
 type IBookIemProps = {
   wishlist?: boolean;
@@ -8,6 +8,14 @@ type IBookIemProps = {
 
 function BookItem({ wishlist, book }: IBookIemProps) {
   const { image, id, title, author, genre, publicationYear, addedBy } = book;
+
+  const date = new Date(publicationYear);
+  const formattedDate = date.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
   return (
     <li className="flex items-start gap-4 rounded-md bg-yellow-50 p-2 py-2">
       <img src={image} alt={title} className="h-40 w-[103px]" />
@@ -18,12 +26,17 @@ function BookItem({ wishlist, book }: IBookIemProps) {
         </p>
         <p>
           Genre:{' '}
-          <span className="rounded-full bg-yellow-100 px-2 text-sm tracking-wide">
+          <span className="rounded-full bg-yellow-100 px-2 text-xs capitalize tracking-wide">
             {genre}
           </span>
         </p>
 
-        <p>Publication Year: {publicationYear}</p>
+        <p>
+          Publication date:{' '}
+          <span className="rounded-full bg-orange-100 px-2 text-xs tracking-wide">
+            {formattedDate}
+          </span>
+        </p>
 
         <p>
           Added by:{' '}
